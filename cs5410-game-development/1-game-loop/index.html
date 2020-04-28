@@ -1,0 +1,35 @@
+<!--Based on https://www.w3schools.com/HTML/tryit.asp?filename=tryhtml_layout_flexbox3-->
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    
+</head>
+<body>
+    <script src="gameLoop.js"></script>
+
+    <div class="flex-container">
+        <header class="header">Browser GameLoop</header>
+        <aside id="this" class="aside aside1">
+            <div id="scroll">
+                <div id="add"></div>
+                <div id="last"></div>
+            </div>
+        </aside>
+        <aside class="aside aside2">
+                <form id="form"> <!-- https://www.w3schools.com/js/tryit.asp?filename=tryjs_form_elements -->
+                    Name: <input type="text" name="Name" value=""><br>
+                    Interval: <input type="text" name="Interval" value=""><br>
+                    # Times: <input type="text" name="Remaining" value=""><br><br>
+                    <button onclick="getValues()" type="button" value="button">Add Event</button>
+                </form>
+                  <!-- <button type="button" onclick="test()">Try it</button> -->
+        </aside>
+        <footer class="footer">Created for CS5410. Chase Mortensen A01535275.
+            
+        </footer>
+      </div>
+
+</body>
+</html>
+

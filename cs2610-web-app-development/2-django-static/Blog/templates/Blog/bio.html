@@ -1,0 +1,47 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <Title>Chase Mortensen</Title>
+    <link type="text/css" rel="stylesheet" href="{% static 'Blog/style.css' %}">
+</head>
+<body style="font-family:sans-serif;">
+    
+    <header>
+        <h1 id="name">Chase Mortensen</h1>
+        <nav>
+        <a href="{% url 'main' %}">Home</a>
+        <a href="#">Bio</a>
+        <a href="{% url 'tech' %}">Tech</a>
+        </nav>
+    </header>
+    
+    <main>
+        <aside>
+        
+    <img src="{% static 'Blog/p1.jpg' %}" alt="p1"> <br>
+    <img src="{% static 'Blog/p2.jpeg' %}" alt="p2"> <br>
+    <img src="{% static 'Blog/p3.jpeg' %}" alt="p3"> <br>
+            
+    </aside>
+        
+        <article>
+        
+        <img src="{% static 'Blog/bio_pic.jpg' %}" alt="Portait photo">
+        <h2>Bio</h2>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Proin nibh nisl condimentum id venenatis. Id venenatis a condimentum vitae sapien. Donec pretium vulputate sapien nec sagittis aliquam malesuada bibendum arcu. A pellentesque sit amet porttitor eget dolor morbi non. Congue eu consequat ac felis. Elementum tempus egestas sed sed. Gravida arcu ac tortor dignissim convallis aenean et tortor. Facilisi nullam vehicula ipsum a arcu cursus. Amet nisl suscipit adipiscing bibendum est. At auctor urna nunc id cursus metus aliquam. Sed adipiscing diam donec adipiscing tristique risus nec feugiat in. Elementum facilisis leo vel fringilla est. Vitae et leo duis ut diam quam nulla porttitor. Pellentesque diam volutpat commodo sed egestas egestas fringilla phasellus faucibus. Aliquet risus feugiat in ante metus dictum. Nisl purus in mollis nunc sed id semper. Eget nullam non nisi est sit amet facilisis magna. Dictum at tempor commodo ullamcorper a lacus vestibulum sed. Nisl tincidunt eget nullam non nisi est sit amet. 
+        </p>
+        </article>
+    
+       
+    </main>
+    
+    
+    
+    <footer>
+    <p>(c) 2018 Chase Mortensen {{time}}</p>
+    </footer>
+
+</body>
+</html>

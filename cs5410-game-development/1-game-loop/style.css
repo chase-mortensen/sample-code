@@ -1,0 +1,52 @@
+.flex-container {
+    display: -webkit-flex;
+    display: flex;  
+    -webkit-flex-flow: row wrap;
+    flex-flow: row wrap;
+    font-weight: bold;
+    text-align: center;
+    font-family: monospace;
+  }
+  
+  .flex-container > * {
+    padding: 10px;
+    flex: 1 100%;
+  }
+
+  form {
+    padding: 10px;
+    align-self: flex-start;
+  }
+
+  input {
+    margin: 10px;
+    align-self: flex-start;
+  }
+  
+  .main {
+    text-align: left;
+    background: cornflowerblue;
+  }
+  
+  .header {background: coral;}
+  .footer {background: lightgreen;}
+  .aside1 {background: moccasin;}
+  .aside2 {background: cornflowerblue;}
+
+  #scroll {
+    height: 300px;
+    overflow-x: none; /* Hide horizontal scrollbar */
+    overflow-y: auto; /* Add vertical scrollbar */
+  }
+  
+  @media all and (min-width: 768px) {
+    .aside { 
+        flex: 1 0px;
+        height: 300px;
+     }
+    .main    { flex: 0 0px; }
+    .aside1 { order: 1; } 
+    .main    { order: 2; }
+    .aside2 { order: 3; }
+    .footer  { order: 4; }
+  }

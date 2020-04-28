@@ -1,0 +1,52 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <Title>Chase Mortensen</Title>
+    <link type="text/css" rel="stylesheet" href="{% static 'Blog/style.css' %}">
+</head>
+<body>
+    
+    <header>
+        <h1>Chase Mortensen</h1>
+        <nav>
+        <a href="#">Home</a>
+        <a href="{% url 'bio' %}">Bio</a>
+        <a href="{% url 'tech' %}">Tech</a>
+        </nav>
+    </header>
+    
+    <main>
+        <aside>
+    <a href="https://www.facebook.com/">Facebook</a> <br>
+    <a href="https://www.google.com/">Google</a> <br>
+    <a href="https://www.tesla.com/">Tesla</a> <br>
+    </aside>
+        <flexbox>
+        <article>
+            <h2>Main Information</h2>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Proin nibh nisl condimentum id venenatis. Id venenatis a condimentum vitae sapien. Donec pretium vulputate sapien nec sagittis aliquam malesuada bibendum arcu. A pellentesque sit amet porttitor eget dolor morbi non. Congue eu consequat ac felis. Elementum tempus egestas sed sed. Gravida arcu ac tortor dignissim convallis aenean et tortor. Facilisi nullam vehicula ipsum a arcu cursus. Amet nisl suscipit adipiscing bibendum est. At auctor urna nunc id cursus metus aliquam. Sed adipiscing diam donec adipiscing tristique risus nec feugiat in. Elementum facilisis leo vel fringilla est. Vitae et leo duis ut diam quam nulla porttitor. Pellentesque diam volutpat commodo sed egestas egestas fringilla phasellus faucibus. Aliquet risus feugiat in ante metus dictum. Nisl purus in mollis nunc sed id semper. Eget nullam non nisi est sit amet facilisis magna. Dictum at tempor commodo ullamcorper a lacus vestibulum sed. Nisl tincidunt eget nullam non nisi est sit amet. 
+        </p>
+        </article>
+    
+        <article>
+        <h2>More Information</h2>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Nibh tortor id aliquet lectus proin. Consectetur libero id faucibus nisl tincidunt eget nullam non nisi. Sed odio morbi quis commodo odio aenean sed adipiscing. Amet aliquam id diam maecenas ultricies mi eget mauris. In aliquam sem fringilla ut morbi tincidunt augue interdum. Aenean pharetra magna ac placerat vestibulum lectus. Leo in vitae turpis massa sed elementum tempus egestas. Commodo viverra maecenas accumsan lacus vel facilisis volutpat est. Ut sem nulla pharetra diam sit amet. Massa sed elementum tempus egestas sed sed risus pretium quam. Nibh ipsum consequat nisl vel pretium. Porttitor rhoncus dolor purus non enim praesent elementum. Aliquam id diam maecenas ultricies mi eget mauris pharetra. Sapien eget mi proin sed.
+        </p>
+        </article>
+    
+        <article>
+            <h2>Conclusion</h2>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Orci a scelerisque purus semper. Dignissim sodales ut eu sem integer vitae. Nam aliquam sem et tortor consequat id porta nibh. Quam pellentesque nec nam aliquam sem. Malesuada fames ac turpis egestas maecenas pharetra convallis. Quis commodo odio aenean sed adipiscing diam donec. Velit ut tortor pretium viverra suspendisse. Eros donec ac odio tempor orci. Ut tellus elementum sagittis vitae et leo duis ut. Lectus sit amet est placerat. In nulla posuere sollicitudin aliquam ultrices sagittis orci. Sed egestas egestas fringilla phasellus faucibus scelerisque eleifend donec. Faucibus scelerisque eleifend donec pretium vulputate sapien nec. Duis convallis convallis tellus id interdum velit. Tristique magna sit amet purus gravida.
+        </p>
+        </article>
+        </flexbox>
+    </main>
+
+    <footer>
+    <p>(c) 2018 Chase Mortensen {{ time }}</p>
+    </footer>
+
+</body>
+</html>

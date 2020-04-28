@@ -1,0 +1,283 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% DEFINITIONS AND FUNCTIONS %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+/inch {72 mul} def
+
+
+/a {2.5 inch} def
+/b {0.125 inch} def
+
+%%% CIRCLE (BLACK TO WHITE TRANSITION OUTSIDE OF HYPOTROCHOIDS) %%%
+
+/circle {
+newpath
+0 6 inch moveto
+360 {
+1 rotate
+0 12 inch lineto
+} repeat
+%0 0 0 setrgbcolor 
+fill
+} def
+
+%%% LARGE HYPOTROCHOID %%%
+
+/hypotrochoid1 {
+/u exch def
+/d 0.1 inch def
+
+d b u a b u a b 
+sub             
+exch            
+cos             
+mul             
+6 1 roll        
+sub             
+exch 
+mul
+exch 
+div 
+cos 
+mul 
+add
+/x exch def
+
+d b u a b u a b 
+sub exch sin mul
+6 1 roll sub exch
+mul exch div sin
+mul sub
+/y exch def
+
+x y lineto
+} def 
+
+%%% LARGE HYPOTROCHOID INIT POSITION %%%
+
+/init1 {
+/u 0 def
+/d 0.1 inch def
+
+d b u a b u a b 
+sub             
+exch            
+cos             
+mul             
+6 1 roll        
+sub             
+exch 
+mul
+exch 
+div 
+cos 
+mul 
+add
+/x exch def
+
+d b u a b u a b 
+sub exch sin mul
+6 1 roll sub exch
+mul exch div sin
+mul sub
+/y exch def
+
+x y moveto
+} def 
+
+%%% SMALL HYPOTROCHOID %%%
+
+/c 1.5 inch def
+/e 0.075 inch def
+/hypotrochoid2 {
+/w exch def
+/f 0.015 inch def
+
+f e w c e w c e 
+sub             
+exch            
+cos             
+mul             
+6 1 roll        
+sub             
+exch 
+mul
+exch 
+div 
+cos 
+mul 
+add
+/x exch def
+
+f e w c e w c e 
+sub exch sin mul
+6 1 roll sub exch
+mul exch div sin
+mul sub
+/y exch def
+
+x y lineto
+} def 
+
+%%% SMALL HYPOTROCHOID INIT POSITION %%%
+
+/init2 {
+/w 0 def
+/f 0.015 inch def
+
+f e w c e w c e 
+sub             
+exch            
+cos             
+mul             
+6 1 roll        
+sub             
+exch 
+mul
+exch 
+div 
+cos 
+mul 
+add
+/x exch def
+
+f e w c e w c e 
+sub exch sin mul
+6 1 roll sub exch
+mul exch div sin
+mul sub
+/y exch def
+
+x y moveto
+} def
+
+%%% SMALLEST HYPOTROCHOID INIT POSITION %%%
+
+/ch 0.8 inch def
+/eh 0.2 inch def
+
+/init3 {
+/wh 0 def
+/fh 0.4 inch def
+
+fh eh wh ch eh wh ch eh 
+sub             
+exch            
+cos             
+mul             
+6 1 roll        
+sub             
+exch 
+mul
+exch 
+div 
+cos 
+mul 
+add
+/xh exch def
+
+fh eh wh ch eh wh ch eh 
+sub exch sin mul
+6 1 roll sub exch
+mul exch div sin
+mul sub
+/yh exch def
+
+xh yh moveto
+} def
+
+%%% SMALLEST HYPOTROCHOID %%%
+
+/hypotrochoid3 {
+/wh exch def
+/fh 0.4 inch def
+
+fh eh wh ch eh wh ch eh 
+sub             
+exch            
+cos             
+mul             
+6 1 roll        
+sub             
+exch 
+mul
+exch 
+div 
+cos 
+mul 
+add
+/xh exch def
+
+fh eh wh ch eh wh ch eh 
+sub exch sin mul
+6 1 roll sub exch
+mul exch div sin
+mul sub
+/yh exch def
+
+xh yh lineto
+} def
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% FUNCTION CALLS / MAIN LOOP %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+/i 1 def
+30 {
+4.2 inch 5 inch translate
+/t 0 def
+
+%%% GRAYSCALE BACKGROUND %%%
+
+i 30 div setgray
+circle
+
+%%% LARGE HYPOTROCHOID LOOP %%%
+
+newpath
+0 0 moveto
+init1
+360 {
+/t 1 t add def
+t hypotrochoid1
+
+} repeat
+
+2 i div 3 i div 5 i div setrgbcolor
+fill
+
+%%% SMALL HYPOTROCHOID LOOP %%%
+
+/v 0 def
+newpath
+0 0 moveto
+init2
+360 {
+/v 1 v add def
+v hypotrochoid2
+} repeat
+i 5 div i 8 div i 13 div setrgbcolor
+fill
+
+
+%%% SMALLEST HYPOTROCHOID LOOP %%%
+
+gsave
+i 12 mul rotate
+
+/vh 0 def
+newpath
+0 0 moveto
+init3
+360 {
+/vh 1 vh add def
+vh hypotrochoid3
+} repeat
+
+2 i div 3 i div 5 i div setrgbcolor
+stroke
+
+grestore
+
+/i 1 i add def
+showpage
+} repeat

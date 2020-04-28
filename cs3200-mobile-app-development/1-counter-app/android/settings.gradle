@@ -1,0 +1,3 @@
+rootProject.name = 'MortensenChaseAssn2android'
+
+include ':app'

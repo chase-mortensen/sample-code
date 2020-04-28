@@ -1,0 +1,179 @@
+{% load static %}
+
+<!DOCTYPE html>
+
+<html>
+	<head>
+		<title>Gold</title>
+		<!--<link rel="stylesheet" type="text/css" href="{% static 'main/style.css' %}/>-->
+		<style>
+		body {
+}
+
+.fib {
+    display: inline-block;
+    background-color: rgba(112,128,144,0.1);
+}
+
+.fib-left {
+    float: left;
+    display: inline-block;
+    margin-right: 4px;
+}
+
+.fib-right {
+    float: right;
+    display: inline-block;
+    margin-left: 4px;
+}
+
+.shadowed {
+    text-shadow: 1px 1px 2px black;
+    color:       white;
+}
+
+.stuff-box {
+    font-family: 'helvetica neue', helvetica, sans-serif;
+    letter-spacing: 1px;
+    text-transform: capitalize;
+    text-align: center;
+    padding: 3px 10px;
+    margin: 10px;
+    cursor: pointer;
+    border-radius: 10px;
+    border-width: 2px;
+    border-style: solid;
+}
+
+.flex {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.red {
+    border-color: rgb(255,0,0);
+    background:   rgb(180,60,60);
+    box-shadow: 1px 1px 2px rgba(200,0,0,0.4);
+}
+
+
+.yellow {
+    border-color: rgb(255,255,0);
+    background:   rgb(180,180,60);
+    box-shadow: 1px 1px 2px rgba(200,200,0,0.4);
+}
+
+.blue {
+    border-color: rgb(0,0,255);
+    background:   rgb(60,60,180);
+    box-shadow: 1px 1px 2px rgba(0,0,200,0.4);
+}
+
+.green {
+    border-color: rgb(0,255,0);
+    background:   rgb(60,180,60);
+    box-shadow: 1px 1px 2px rgba(0,200,0,0.4);
+}
+
+.white {
+    border-color: rgb(255,255,255);
+    background:   rgb(180,180,180);
+    box-shadow: 1px 1px 2px rgba(200,200,0,0.4);
+}
+
+.black {
+    border-color: rgb(0,0,0);
+    background:   rgb(75,75,75);
+    box-shadow: 1px 1px 2px rgba(200,200,0,0.4);
+}
+		</style>
+	</head>
+	<body onload="fetch()">
+	
+	<!--<div> <!--class="shadowed red stuff-box flex"-->
+	<div class="shadowed red stuff-box">
+	<h2>Are you worth your weight in gold?</h2>
+	<p>Enter weight:</p>
+	<input type="number" step=.1 id="weight_lbs">
+    </div>
+	
+	   <div class="shadowed blue stuff-box">
+		   <button type="button" onclick="convert()">Convert</button>
+		   <p id="quandl"></p>
+	   </div>
+	   <script>
+
+	 var apiKey = 'KNuYtBsrzdp96yMKL8xA';
+
+<!--
+    var today = new Date();
+    var start = "2018-04-20";
+    var end = today.getFullYear() + "-" + today.getMonth() + "-" + today.getDay();
+    -->
+    
+    var aWeekAgo = new Date();
+    aWeekAgo.setDate(aWeekAgo.getDate() - 7);
+    var start = aWeekAgo.toISOString().slice(0, 10);
+    var end = new Date().toISOString().slice(0, 10);
+
+	 var url = "https://www.quandl.com/api/v3/datasets/LBMA/GOLD.json?api_key=" + apiKey + "&column_index=2&start_date=" + start + "&end_date=" + end;
+
+	 // global variable for 'output'
+	 var theData;
+	 var goldPrice;
+	 var fetch = function() {
+		var xhr = new XMLHttpRequest();
+		xhr.open('GET', url);
+		xhr.responseType = 'json';
+		xhr.onload = function() {
+		  theData = xhr.response;
+		  console.log(theData);
+		  document.querySelector('#quandl').textContent = "";
+		  goldPrice = theData.dataset.data[0][1];
+		  <!--document.title = theData.dataset.name + " from Quandl's API"-->
+		 };
+		 xhr.send();
+	 };
+	 
+	 var newData;
+	 var weightLbs;
+	 <!--var newUrl = "http://127.0.0.1:8000/init";--> 
+	 
+	 var convert = function() {
+    	weightLbs = +document.getElementById('weight_lbs').value;
+    	var newUrl = "http://127.0.0.1:8000/convert/get/?from=lbs&to=t_oz&value=" + weightLbs;
+		var xhr = new XMLHttpRequest();
+		xhr.open('GET', newUrl);
+		xhr.responseType = 'json';
+		<!--xhr.send();-->
+		xhr.onload = function() {
+		  newData = xhr.response;
+		  console.log(newData);
+		  if('error' in newData)  {
+    		  document.querySelector('#quandl').textContent = "Error: Invalid unit conversion request" + newData['error'];
+    		  }
+		  else {
+    		  <!--var newVal = newData['value'] + theData.dataset.data[0][1];-->
+    		  var newVal = newData['value'] * theData.dataset.data[0][1];
+    		  var newVal = parseFloat(newVal).toFixed(2);
+    		  document.querySelector('#quandl').textContent = "You are worth $" + newVal;
+		  }
+		  <!--goldPrice = theData.dataset.data[0][1];-->
+		  <!--document.title = theData.dataset.name + " from Quandl's API"-->
+		 };
+		 xhr.send();
+	 };
+	 
+	 <!--var convert = function() {
+    	 <!--var pounds = document.querySelector('#weight_lbs').value;
+    	 <!--var t_oz = 14.5833 * pounds;
+    	 <!--var value = t_oz * goldPrice;
+    	 <!--document.querySelector('#quandl').textContent = "You are worth $" + value;
+	 <!--}-->
+
+	   </script>
+
+	</body>
+</html>

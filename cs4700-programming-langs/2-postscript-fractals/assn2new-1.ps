@@ -1,0 +1,117 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+% ASSN 2 CHASE MORTENSEN %
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+/XA {
+1 sub 
+/n exch def
+n 0 eq
+{F}
+{n n n n n XA L XB R R XA L XA R XA }
+ifelse
+} def
+
+/XB {
+1 sub 
+/n exch def
+n 0 eq
+{F}
+{n n n n n XB R XA L R XB L XA R XB }
+ifelse
+} def
+
+/XC {
+1 sub 
+/n exch def
+n 0 eq
+{FA}
+{2 n n n n 2 XB XC PUSH R XC POP L XC PUSH XC POP XB }
+ifelse
+} def
+
+/XD {
+1 sub 
+/n exch def
+n 0 eq
+{FA}
+{2 n n n n 2 XA XD PUSH R XD POP L XD PUSH XD POP XA}
+ifelse
+} def
+
+/XE {
+1 sub 
+/n exch def
+n 0 eq
+{FA}
+{n n n n XE PUSH R POP XE L XE L  XE}
+ifelse
+} def
+
+/PUSH { 
+gsave 
+} def
+
+/POP {
+grestore
+} def
+
+/F {
+10 0 rlineto
+} def
+
+/FA {
+20 0 rlineto
+} def
+
+/R { 
+-40 rotate
+} def
+
+/L {
+60 rotate
+} def
+
+newpath
+100 100 moveto
+7 XD
+0.3 0.2 0.9 setrgbcolor
+stroke
+showpage
+
+newpath
+100 400 moveto
+7 XC
+0.3 0.2 0.9 setrgbcolor
+stroke
+showpage
+
+newpath
+400 400 moveto
+7 XE
+0.3 0.2 0.9 setrgbcolor
+stroke
+showpage
+
+300 300 translate
+360 {
+1 rotate
+newpath
+100 100 moveto
+5 XB
+0.7 0.2 0.1 setrgbcolor
+stroke
+} repeat
+
+showpage
+
+300 300 translate
+120 {
+3 rotate
+newpath
+100 100 moveto
+5 XB
+0.3 0.2 0.9 setrgbcolor
+stroke
+} repeat
+
+showpage
