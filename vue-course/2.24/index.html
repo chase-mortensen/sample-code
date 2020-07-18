@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title></title>
+  <meta name="author" content="">
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- <link href="css/style.css" rel="stylesheet"> -->
+  <script src="../vue.js"></script>
+</head>
+
+<body>
+
+  <div id="app">
+    <button v-on:click="counter++">increase</button>
+    <button v-on:click="counter--">decrease</button>
+    
+    <p>{{ counter }}</p>
+    <!-- <p>{{ counter * 2 > 10 ? 'That\'s a lot, bud.' : 'Keep going, gal' }}</p> -->
+
+    <p v-on:mousemove="updateCoordinates">
+      Coordinates: ({{ x }}, {{ y }})
+      - <span v-on:mousemove.stop="">DEAD SPOT</span>
+    </p>
+    <input type="text" v-on:keyup.enter.space="alertMe">
+
+  </div>
+  
+  <script src="script.js"></script>
+</body>
+
+</html>

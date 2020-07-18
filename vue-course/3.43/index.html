@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title></title>
+  <meta name="author" content="">
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- <link href="style.css" rel="stylesheet"> -->
+  <script src="../vue.js"></script>
+</head>
+
+<body>
+  <div id="app">
+
+    <ul>
+      <li v-for="(ingredient, i) in ingredients">{{ ingredient }} ({{ i }})</li>
+    </ul>
+
+    <template v-for="(ingredient, i) in ingredients">
+      <h3>{{ ingredient }}</h3>
+      <p>{{ i }}</p>
+    </template>
+
+  </div>
+
+  <script src="script.js"></script>
+</body>
+
+</html>
