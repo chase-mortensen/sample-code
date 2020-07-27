@@ -32,7 +32,7 @@ export default {
 </script>
 
 <style>
-.fade-enter {
+/* .fade-enter {
 
 }
 
@@ -46,5 +46,5 @@ export default {
 
 .fade-leave-active {
   
-}
+} */
 </style>

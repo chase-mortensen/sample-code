@@ -9,4 +9,4 @@ Vue.http.root = 'https://vuejs-http-959b5.firebaseio.com/data.json';
 new Vue({
   el: '#app',
   render: h => h(App)
-})
+});

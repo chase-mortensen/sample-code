@@ -15,4 +15,4 @@ export const fruitMixin = {
   created() {
     console.log('Inside fruitMixin.js created');
   }
-}
+};

@@ -12,11 +12,11 @@ Vue.http.interceptors.push((request, next) => {
   }
 
   next(response => {
-    response.json = () => { return { messages: response.body } };
+    response.json = () => { return { messages: response.body }; };
   });
 });
 
 new Vue({
   el: '#app',
   render: h => h(App)
-})
+});
